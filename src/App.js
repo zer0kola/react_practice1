@@ -3,19 +3,28 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import data from "./data.js";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   let [shoes] = useState(data);
 
   return (
     <div>
+      <Routes>
+        <Route path="/" element={<div>메인 페이지</div>} />
+        <Route path="/detail" element={<div> 상세페이지</div>} />
+        <Route path="/about" element={<div> 어바웃 페이지</div>} />
+      </Routes>
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <div>
+              <Link to="/">홈</Link>
+            </div>
+            <div>
+              <Link to="/detail">상세페이지</Link>
+            </div>
           </Nav>
         </Container>
       </Navbar>
