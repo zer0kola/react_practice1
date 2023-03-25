@@ -10,43 +10,59 @@ function App() {
 
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<div>메인 페이지</div>} />
-        <Route path="/detail" element={<div> 상세페이지</div>} />
-        <Route path="/about" element={<div> 어바웃 페이지</div>} />
-      </Routes>
       <Navbar bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="#home">CodingApple</Navbar.Brand>
+          <Navbar.Brand href="/">CodingApple</Navbar.Brand>
           <div style={{ flexGrow: 1 }} />
           <Nav className="me-auto">
             <div>
-              <Link to="/detail">상세페이지</Link>
+              <Link to="/detail" style={{ paddingRight: 5 }}>
+                상세페이지
+              </Link>
+              <Link to="/about">어바웃</Link>
             </div>
           </Nav>
         </Container>
       </Navbar>
 
-      <div className="main-bg" />
-
-      <div className="container">
-        <div className="row">
-          {/* map을 이용해 반복되는 코드 최소화 */}
-          {shoes.map((a, i) => {
-            return (
-              <div className="col-md-4" key={i}>
-                <img src={process.env.PUBLIC_URL + a.img} width="80%" alt="" />
-                <h4>{a.title}</h4>
-                <p>{a.content}</p>
-                <p>{a.price}</p>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <div className="main-bg" />
+              <div className="container">
+                <div className="row">
+                  {/* map을 이용해 반복되는 코드 최소화 */}
+                  {shoes.map((a, i) => {
+                    return (
+                      <div className="col-md-4" key={i}>
+                        <img src={process.env.PUBLIC_URL + a.img} width="80%" alt="" />
+                        <h4>{a.title}</h4>
+                        <p>{a.content}</p>
+                        <p>{a.price}</p>
+                      </div>
+                    );
+                  })}
+                  <Card shoes={shoes[0]} />
+                  <Card shoes={shoes[1]} />
+                  <Card shoes={shoes[2]} />
+                </div>
               </div>
-            );
-          })}
-          <Card shoes={shoes[0]} />
-          <Card shoes={shoes[1]} />
-          <Card shoes={shoes[2]} />
-        </div>
-      </div>
+            </>
+          }
+        />
+        <Route path="/detail" element={<div> 상세페이지</div>} />
+        <Route
+          path="/about"
+          element={
+            <div>
+              {" "}
+              <Detail />
+            </div>
+          }
+        />
+      </Routes>
     </div>
   );
 }
@@ -58,6 +74,24 @@ function Card(props) {
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content}</p>
       <p>{props.shoes.price}</p>
+    </div>
+  );
+}
+
+function Detail(props) {
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6">
+          <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+        </div>
+        <div className="col-md-6">
+          <h4 className="pt-5">상품명</h4>
+          <p>상품설명</p>
+          <p>120000원</p>
+          <button className="btn btn-danger">주문하기</button>
+        </div>
+      </div>
     </div>
   );
 }
