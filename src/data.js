@@ -1,23 +1,23 @@
 let data = [
   {
     id: 0,
-    title: "White and Black",
-    content: "Born in France",
-    price: 120000,
+    title: "Kasina",
+    content: "Industrial Blue",
+    price: 900000,
   },
 
   {
     id: 1,
-    title: "Red Knit",
-    content: "Born in Seoul",
-    price: 110000,
+    title: "AirJordan 1",
+    content: "Lost and Found",
+    price: 400000,
   },
 
   {
     id: 2,
-    title: "Grey Yordan",
-    content: "Born in the States",
-    price: 130000,
+    title: "Yeezy Slides",
+    content: "bone",
+    price: 300000,
   },
 ];
 
