@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import data from "./data.js";
+import shoesData from "./shoesData.js";
 import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes] = useState(shoesData); // shoesData를 shoes라는 state에 넣어줌
 
   return (
     <div>
@@ -31,26 +31,33 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + "shoes1.jpg"} width="90%" alt="" />
-            <h4>{shoes[0].title}</h4>
-            <p>{shoes[0].content}</p>
-            <p>{shoes[0].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + "shoes2.jpg"} width="80%" alt="" />
-            <h4>{shoes[1].title}</h4>
-            <p>{shoes[1].content}</p>
-            <p>{shoes[1].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + "shoes3.jpg"} width="80%" alt="" />
-            <h4>{shoes[2].title}</h4>
-            <p>{shoes[2].content}</p>
-            <p>{shoes[2].price}</p>
-          </div>
+          {/* map을 이용해 반복되는 코드 최소화 */}
+          {shoes.map((a, i) => {
+            return (
+              <div className="col-md-4" key={i}>
+                <img src={process.env.PUBLIC_URL + a.img} width="80%" alt="" />
+                <h4>{a.title}</h4>
+                <p>{a.content}</p>
+                <p>{a.price}</p>
+              </div>
+            );
+          })}
+          <Card shoes={shoes[0]} />
+          <Card shoes={shoes[1]} />
+          <Card shoes={shoes[2]} />
         </div>
       </div>
+    </div>
+  );
+}
+
+function Card(props) {
+  return (
+    <div className="col-md-4">
+      <img src={process.env.PUBLIC_URL + props.shoes.image} width="80%" alt="" />
+      <h4>{props.shoes.title}</h4>
+      <p>{props.shoes.content}</p>
+      <p>{props.shoes.price}</p>
     </div>
   );
 }

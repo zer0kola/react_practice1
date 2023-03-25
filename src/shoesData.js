@@ -1,5 +1,6 @@
-let data = [
+const shoesData = [
   {
+    img: "/shoes1.jpg",
     id: 0,
     title: "Kasina",
     content: "Industrial Blue",
@@ -7,6 +8,7 @@ let data = [
   },
 
   {
+    img: "/shoes2.jpg",
     id: 1,
     title: "AirJordan 1",
     content: "Lost and Found",
@@ -14,6 +16,7 @@ let data = [
   },
 
   {
+    img: "/shoes3.jpg",
     id: 2,
     title: "Yeezy Slides",
     content: "bone",
@@ -21,4 +24,4 @@ let data = [
   },
 ];
 
-export default data;
+export default shoesData;
