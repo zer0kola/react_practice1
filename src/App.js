@@ -42,6 +42,7 @@ function App() {
                       </div>
                     );
                   })}
+                  {/* 컴포넌트를 이용해 반복되는 코드 줄이기 */}
                   <Card shoes={shoes[0]} />
                   <Card shoes={shoes[1]} />
                   <Card shoes={shoes[2]} />
@@ -50,6 +51,7 @@ function App() {
             </>
           }
         />
+
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버들</div>} />
@@ -80,7 +82,7 @@ function About() {
   return (
     <div>
       <h1>About</h1>
-      <Outlet></Outlet>
+      <Outlet />
     </div>
   );
 }
@@ -89,7 +91,8 @@ function EventPage() {
   return (
     <div>
       <h4>오늘의 이벤트</h4>
-      <Outlet></Outlet>
+      {/* Outlet을 사용하면 하위 라우트가 보여질 자리를 정해줌 */}
+      <Outlet />
     </div>
   );
 }
