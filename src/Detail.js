@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
 // div에 ` `를 사용하면 css를 적용할 수 있음
 // css가 적용된 div를 Box라는 이름으로 사용할 수 있음
@@ -10,6 +11,8 @@ import styled from "styled-components";
 // 장점1. CSS 파일 오픈할 필요없이 JS 파일에서 바로 스타일을 넣을 수 있습니다.
 // 장점2. 여기 적은 스타일이 다른 JS 파일로 오염되지 않습니다. 원래 그냥 CSS파일은 오염됩니다.
 // 장점3. 페이지 로딩시간 단축됩니다.
+
+//서버에 GET, POST 요청을 할 때 새로고침 없이 데이터를 주고받을 수 있게 도와주는 간단한 브라우저 기능을 AJAX
 
 let Box = styled.div`
   padding: 20px;
@@ -68,6 +71,19 @@ function Detail(props) {
           <button
             onClick={() => {
               setCount(count + 1);
+            }}>
+            버튼
+          </button>
+          <button
+            onClick={() => {
+              axios
+                .get("https://codingapple1.github.io/shop/data2.json")
+                .then((결과) => {
+                  console.log(결과.data);
+                })
+                .catch(() => {
+                  console.log("실패함");
+                });
             }}>
             버튼
           </button>
