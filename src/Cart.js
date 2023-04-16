@@ -45,7 +45,6 @@ function Cart() {
           })}
         </tbody>
       </Table>
-      ;
     </div>
   );
 }
